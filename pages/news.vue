@@ -9,7 +9,7 @@
           pa-2
           v-scroll-reveal.reset
         >
-          <v-card :href="post.link" class="animated bounceIn">
+          <v-card :href="post.link" class="animated bounceIn delay-2s">
             <v-img v-if="post.image.url" :src="post.image.url"></v-img>
             <v-card-title primary-title>
               <div>
@@ -31,7 +31,7 @@
 import _ from 'lodash'
 
 export default {
-  name: 'Index',
+  name: 'News',
   data() {
     return {
       posts: [],
@@ -84,6 +84,11 @@ export default {
           }
         })
       }
+    }
+  },
+  head() {
+    return {
+      title: 'News'
     }
   }
 }

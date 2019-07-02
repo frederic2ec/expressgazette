@@ -24,7 +24,7 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title
-              v-text="this.$store.state.dark ? 'LIGHT MODE' : 'DARK MODE'"
+              v-text="this.$store.state.dark ? 'Light Mode' : 'Dark Mode'"
             />
           </v-list-tile-content>
         </v-list-tile>
@@ -32,7 +32,7 @@
     </v-navigation-drawer>
     <v-toolbar clipped-left fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title>The Express Gazette</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container>
@@ -41,7 +41,7 @@
     </v-content>
 
     <v-footer :fixed="fixed" app>
-      <span>&copy; 2019</span>
+      <span>&copy; 2019 - The Express Gazette</span>
     </v-footer>
   </v-app>
 </template>
@@ -51,7 +51,6 @@ import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      clipped: false,
       drawer: false,
       items: [
         {
@@ -64,11 +63,7 @@ export default {
           title: 'Inspire',
           to: '/inspire'
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      ]
     }
   },
   methods: {

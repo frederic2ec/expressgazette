@@ -1,73 +1,90 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
+    <v-flex md12>
+      <v-layout row wrap>
+        <v-flex
+          v-for="(post, index) in listItems"
+          v-bind:key="index"
+          md4
+          pa-2
+          v-scroll-reveal.reset
+        >
+          <v-card :href="post.link" class="animated bounceIn">
+            <v-img v-if="post.image.url" :src="post.image.url"></v-img>
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0">{{ post.title }}</h3>
+                <div>{{ post.summary }}</div>
+              </div></v-card-title
             >
-              issue board </a>.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">
-            Nuxt Documentation
-          </a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" flat nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+            <v-card-actions
+              ><v-btn flat>{{ post.date | formatDate }}</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import _ from 'lodash'
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
+  name: 'Index',
+  data() {
+    return {
+      posts: [],
+      url: [
+        'https://abcnews.go.com/abcnews/internationalheadlines',
+        'http://feeds.abcnews.com/abcnews/usheadlines',
+        'http://feeds.bbci.co.uk/news/uk/rss.xml',
+        'http://feeds.bbci.co.uk/news/world/rss.xml',
+        'http://feeds.washingtonpost.com/rss/national',
+        'http://feeds.washingtonpost.com/rss/world',
+        'https://feeds2.feedburner.com/time/world'
+      ]
+    }
+  },
+  computed: {
+    listItems() {
+      return _.orderBy(this.posts, 'date', 'desc')
+    }
+  },
+  mounted() {
+    this.fetchRss()
+  },
+  methods: {
+    fetchRss() {
+      const FeedParser = require('feedparser')
+      const request = require('request') // for fetching the feed
+      const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
+
+      for (let i = 0; i < this.url.length; i++) {
+        const req = request(CORS_PROXY + this.url[i])
+        const feedparser = new FeedParser()
+        req.on('response', (res) => {
+          const stream = req // `this` is `req`, which is a stream
+
+          if (res.statusCode !== 200) {
+            this.emit('error', new Error('Bad status code'))
+          } else {
+            stream.pipe(feedparser)
+          }
+        })
+
+        feedparser.on('readable', () => {
+          // This is where the action is!
+          const stream = feedparser // `this` is `feedparser`, which is a stream
+          let item
+
+          while ((item = stream.read())) {
+            this.posts.push(item)
+            console.log(item)
+          }
+        })
+      }
+    }
   }
 }
 </script>

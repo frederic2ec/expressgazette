@@ -11,14 +11,20 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "now-build": "nuxt build --spa"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/vuetify": "0.5.5",
+    "animate.css": "^3.7.2",
+    "feedparser": "^2.2.9",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "nuxt": "^2.0.0",
-    "rss-parser": "^3.7.1"
+    "rss-parser": "^3.7.1",
+    "vue-scroll-reveal": "^1.0.11"
   },
   "devDependencies": {
     "stylus": "^0.54.5",

@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import webpack from 'webpack'
 
 export default {
   mode: 'universal',
@@ -33,11 +34,14 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [{ src: 'animate.css/animate.css', lang: 'css' }],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/vue-scroll-reveal', ssr: false },
+    '~plugins/formatDate.js'
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -75,6 +79,28 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.node = {
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
+      }
+      if (ctx.dev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
+        })
+      }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'lodash'
+      })
+    ]
   }
 }

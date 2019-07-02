@@ -24,7 +24,8 @@
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
     "rss-parser": "^3.7.1",
-    "vue-scroll-reveal": "^1.0.11"
+    "vue-scroll-reveal": "^1.0.11",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "stylus": "^0.54.5",

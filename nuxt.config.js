@@ -40,7 +40,8 @@ export default {
    */
   plugins: [
     { src: '~/plugins/vue-scroll-reveal', ssr: false },
-    '~plugins/formatDate.js'
+    '~plugins/formatDate.js',
+    { src: '~/plugins/vuex-persist', ssr: false }
   ],
   /*
    ** Nuxt.js modules

@@ -54,14 +54,29 @@ export default {
       drawer: false,
       items: [
         {
-          icon: 'apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'fas fa-newspaper',
+          title: 'News',
+          to: '/news'
         },
         {
-          icon: 'bubble_chart',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'fas fa-bullhorn',
+          title: 'Politics',
+          to: '/politics'
+        },
+        {
+          icon: 'fas fa-handshake',
+          title: 'Business',
+          to: '/business'
+        },
+        {
+          icon: 'fas fa-flask',
+          title: 'Science',
+          to: '/science'
+        },
+        {
+          icon: 'fas fa-film',
+          title: 'Culture',
+          to: '/culture'
         }
       ]
     }

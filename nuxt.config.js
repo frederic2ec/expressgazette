@@ -18,14 +18,7 @@ export default {
         content: 'News, Politics, Science, Entertainment, Business' || ''
       }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
-      }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -34,7 +27,18 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{ src: 'animate.css/animate.css', lang: 'css' }],
+  css: [
+    { src: 'animate.css/animate.css', lang: 'css' },
+    { src: '@fortawesome/fontawesome-free/css/all.css', lang: 'css' },
+    {
+      src: 'material-design-icons-iconfont/dist/material-design-icons.css',
+      lang: 'css'
+    },
+    {
+      src: 'typeface-roboto/index.css',
+      lang: 'css'
+    }
+  ],
   /*
    ** Plugins to load before mounting the App
    */

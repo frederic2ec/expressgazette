@@ -4,21 +4,25 @@
       <v-layout row wrap>
         <v-flex
           v-for="(post, index) in listItems"
-          v-bind:key="index"
+          :key="index"
+          v-scroll-reveal.reset
           md4
           pa-2
-          v-scroll-reveal.reset
         >
           <v-card :href="post.link" class="animated bounceIn delay-2s">
-            <v-img v-if="post.image.url" :src="post.image.url"></v-img>
+            <v-img v-if="post.image.url" :src="post.image.url" />
             <v-card-title primary-title>
               <div>
-                <h3 class="headline mb-0">{{ post.title }}</h3>
+                <h3 class="headline mb-0">
+                  {{ post.title }}
+                </h3>
                 <div>{{ post.summary }}</div>
-              </div></v-card-title
-            >
-            <v-card-actions
-              ><v-btn flat>{{ post.date | formatDate }}</v-btn>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat>
+                {{ post.date | formatDate }}
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>

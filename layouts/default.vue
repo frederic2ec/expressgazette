@@ -10,7 +10,9 @@
           exact
         >
           <v-list-tile-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>
+              {{ item.icon }}
+            </v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title v-text="item.title" />
@@ -18,9 +20,9 @@
         </v-list-tile>
         <v-list-tile @click.stop="toggleDark">
           <v-list-tile-action>
-            <v-icon>{{
-              this.$store.state.dark ? 'wb_sunny' : 'wb_cloudy'
-            }}</v-icon>
+            <v-icon>
+              {{ this.$store.state.dark ? 'wb_sunny' : 'wb_cloudy' }}
+            </v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title
@@ -40,7 +42,7 @@
       </v-container>
     </v-content>
 
-    <v-footer :fixed="fixed" app>
+    <v-footer fixed app>
       <span>&copy; 2019 - The Express Gazette</span>
     </v-footer>
   </v-app>

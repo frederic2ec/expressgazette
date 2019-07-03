@@ -39,7 +39,7 @@ export default {
         'http://feeds.abcnews.com/abcnews/politicsheadlines',
         'http://feeds.bbci.co.uk/news/politics/rss.xml',
         'http://feeds.washingtonpost.com/rss/politics',
-        'http://feeds.feedburner.com/timeblogs/swampland'
+        'http://feeds.feedburner.com/timeblogs/swampland?format=xml'
       ]
     }
   },
@@ -77,7 +77,6 @@ export default {
 
           while ((item = stream.read())) {
             this.posts.push(item)
-            console.log(item)
           }
         })
       }

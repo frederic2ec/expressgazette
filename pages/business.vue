@@ -38,7 +38,7 @@ export default {
       url: [
         'http://feeds.bbci.co.uk/news/business/rss.xml',
         'http://feeds.washingtonpost.com/rss/business',
-        'http://feeds2.feedburner.com/time/business'
+        'http://feeds2.feedburner.com/time/business?format=xml'
       ]
     }
   },
@@ -76,7 +76,6 @@ export default {
 
           while ((item = stream.read())) {
             this.posts.push(item)
-            console.log(item)
           }
         })
       }

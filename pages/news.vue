@@ -42,7 +42,7 @@ export default {
         'http://feeds.bbci.co.uk/news/world/rss.xml',
         'http://feeds.washingtonpost.com/rss/national',
         'http://feeds.washingtonpost.com/rss/world',
-        'https://feeds2.feedburner.com/time/world'
+        'https://feeds2.feedburner.com/time/world?format=xml'
       ]
     }
   },
@@ -80,7 +80,6 @@ export default {
 
           while ((item = stream.read())) {
             this.posts.push(item)
-            console.log(item)
           }
         })
       }

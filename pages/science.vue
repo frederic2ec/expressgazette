@@ -75,7 +75,6 @@ export default {
 
           while ((item = stream.read())) {
             this.posts.push(item)
-            console.log(item)
           }
         })
       }

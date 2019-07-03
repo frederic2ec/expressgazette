@@ -39,7 +39,7 @@ export default {
         'https://abcnews.go.com/abcnews/entertainmentheadlines',
         'http://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml',
         'http://feeds.washingtonpost.com/rss/entertainment',
-        'http://feeds2.feedburner.com/time/entertainment'
+        'http://feeds2.feedburner.com/time/entertainment?format=xml'
       ]
     }
   },
@@ -77,7 +77,6 @@ export default {
 
           while ((item = stream.read())) {
             this.posts.push(item)
-            console.log(item)
           }
         })
       }

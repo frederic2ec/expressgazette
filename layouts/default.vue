@@ -4,7 +4,7 @@
     <v-content>
       <v-container>
         <v-flex>
-          <adsbygoogle :ad-slot="adsense_slot" />
+          <adsbygoogle ad-slot="9893699572" />
         </v-flex>
         <nuxt />
       </v-container>

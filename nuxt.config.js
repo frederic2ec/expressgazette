@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -71,10 +70,10 @@ export default {
   vuetify: {},
 
   'google-adsense': {
-    id: process.env.ADSENSE_ID
+    id: '5159235346945401'
   },
   googleAnalytics: {
-    id: process.env.ANALYTICS_ID
+    id: 'UA-33196438-6'
   },
   /*
    ** Build configuration

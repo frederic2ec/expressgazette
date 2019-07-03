@@ -1,5 +1,5 @@
-import colors from 'vuetify/es5/util/colors'
 import webpack from 'webpack'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
@@ -55,7 +55,9 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/google-adsense',
+    '@nuxtjs/google-analytics'
   ],
   /*
    ** Axios module configuration
@@ -67,6 +69,13 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {},
+
+  'google-adsense': {
+    id: process.env.ADSENSE_ID
+  },
+  googleAnalytics: {
+    id: process.env.ANALYTICS_ID
+  },
   /*
    ** Build configuration
    */
